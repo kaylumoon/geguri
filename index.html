@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotizador Casilla Coreana</title>
+    <style>
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background-color: #e8f5e9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #2e7d32;
+        }
+        .calculator-card {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+            width: 100%;
+            max-width: 380px;
+            border-top: 6px solid #81c784;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 0;
+            color: #388e3c;
+            font-size: 22px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+            color: #4caf50;
+            font-size: 14px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #c8e6c9;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            color: #333;
+        }
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #81c784;
+            box-shadow: 0 0 5px rgba(129, 199, 132, 0.5);
+        }
+        button {
+            width: 100%;
+            background-color: #66bb6a;
+            color: white;
+            border: none;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        button:hover {
+            background-color: #4caf50;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f1f8e9;
+            border-radius: 6px;
+            border: 1px dashed #a5d6a7;
+            display: none;
+        }
+        .result p {
+            margin: 10px 0;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            color: #2e7d32;
+        }
+        .result p span:last-child {
+            font-weight: bold;
+            color: #1b5e20;
+        }
+        .total {
+            font-size: 18px !important;
+            font-weight: bold;
+            color: #1b5e20;
+            border-top: 1px solid #c8e6c9;
+            padding-top: 15px;
+            margin-top: 15px !important;
+        }
+    </style>
+</head>
+<body>
+
+<div class="calculator-card">
+    <h2>Cotizador de Lotes</h2>
+    
+    <label for="lotPrice">Valor Base (USD):</label>
+    <input type="number" id="lotPrice" placeholder="Ej: 15" min="0" step="1">
+    
+    <button onclick="calculateTotal()">Calcular Total</button>
+
+    <div class="result" id="resultDiv">
+        <p><span>Base ingresada:</span> <span><span id="outBase">0</span> USD</span></p>
+        <p><span>Costo de Artículos (x1350):</span> <span>$<span id="outCost">0</span></span></p>
+        <p><span>Fee Reajustado:</span> <span>$<span id="outFee">0</span></span></p>
+        <p class="total"><span>Total a Cobrar:</span> <span>$<span id="outTotal">0</span></span></p>
+    </div>
+</div>
+
+<script>
+    function calculateTotal() {
+        const lotPriceInput = document.getElementById('lotPrice').value;
+        const baseValue = parseFloat(lotPriceInput);
+
+        // Validar que sea un número positivo
+        if (isNaN(baseValue) || baseValue <= 0) {
+            alert("Por favor, ingresa un valor base mayor a 0.");
+            return;
+        }
+
+        // Calcular el Costo de Artículos
+        const itemCost = baseValue * 1350;
+
+        // Calcular el Fee según si es menor o mayor/igual a 30 USD
+        let fee = 0;
+        if (baseValue < 30) {
+            fee = ((3086 + (baseValue * 41.7)) * 1.03) + (baseValue * 30);
+        } else {
+            fee = ((3086 + (baseValue * 69.3)) * 1.03) + (baseValue * 30);
+        }
+
+        // Redondear el fee para no tener decimales largos
+        fee = Math.round(fee);
+
+        // Calcular el Total
+        const total = itemCost + fee;
+
+        // Formatear los números con separador de miles (ej: 10.294)
+        const formatNumber = (num) => {
+            return num.toLocaleString('es-AR');
+        };
+
+        // Imprimir resultados en pantalla
+        document.getElementById('outBase').innerText = baseValue;
+        document.getElementById('outCost').innerText = formatNumber(itemCost);
+        document.getElementById('outFee').innerText = formatNumber(fee);
+        document.getElementById('outTotal').innerText = formatNumber(total);
+        
+        // Mostrar la caja de resultados
+        document.getElementById('resultDiv').style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
