@@ -138,6 +138,9 @@
             fee = ((3086 + (baseValue * 69.3)) * 1.03) + (baseValue * 30);
         }
 
+        // Aumento del 2% sobre el fee total calculado
+        fee = fee * 1.02;
+
         // Redondear el fee para no tener decimales largos
         fee = Math.round(fee);
 
