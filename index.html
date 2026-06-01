@@ -8,7 +8,6 @@
     <style>
         body {
             font-family: 'Quicksand', sans-serif;
-            /* Fondo celeste pastel con puntitos blancos */
             background-color: #dcf2f9;
             background-image: 
                 radial-gradient(#ffffff 20%, transparent 20%),
@@ -22,21 +21,21 @@
             min-height: 100vh;
             margin: 0;
             padding: 20px;
-            color: #8c6b6b; /* Color de texto marrón suave (típico en diseños kawaii) */
+            color: #8c6b6b; 
         }
         
         .calculator-card {
             background-color: #ffffff;
-            border: 6px solid #dcf2f9; /* Borde celeste grueso como en la foto */
-            border-radius: 35px; /* Bordes muy redondeados */
-            padding: 10px; /* Espacio para el borde punteado interno */
+            border: 6px solid #dcf2f9; 
+            border-radius: 35px; 
+            padding: 10px; 
             width: 100%;
             max-width: 400px;
-            box-shadow: 0 10px 0 rgba(220, 242, 249, 0.8); /* Sombrita celeste abajo */
+            box-shadow: 0 10px 0 rgba(220, 242, 249, 0.8); 
         }
 
         .card-inner {
-            border: 3px dashed #fbdce2; /* Borde punteado rosa pastel */
+            border: 3px dashed #fbdce2; 
             border-radius: 25px;
             padding: 25px 20px;
         }
@@ -44,7 +43,7 @@
         h2 {
             text-align: center;
             margin-top: 0;
-            color: #f18fb4; /* Rosa vibrante pastel */
+            color: #f18fb4; 
             font-size: 26px;
             font-weight: 700;
             letter-spacing: 1px;
@@ -52,7 +51,6 @@
             margin-bottom: 15px;
         }
         
-        /* Estilos para la foto en forma de corazón */
         .heart-img {
             width: 90px;
             height: 90px;
@@ -75,7 +73,7 @@
             font-weight: 700;
             display: block;
             margin-bottom: 8px;
-            color: #92d3a3; /* Verde pastel */
+            color: #92d3a3; 
             font-size: 16px;
             text-align: center;
         }
@@ -86,7 +84,7 @@
             margin-bottom: 20px;
             border: 2px solid #fbdce2;
             background-color: #fffafb;
-            border-radius: 20px; /* Forma de píldora */
+            border-radius: 20px; 
             box-sizing: border-box;
             font-family: 'Quicksand', sans-serif;
             font-size: 16px;
@@ -104,15 +102,15 @@
         
         button {
             width: 100%;
-            background-color: #c5eaa6; /* Verde clarito de tu imagen de referencia */
-            color: #6a8c4f; /* Texto verde más oscurito */
+            background-color: #c5eaa6; 
+            color: #6a8c4f; 
             border: none;
             padding: 15px;
             font-size: 18px;
             font-weight: 700;
-            border-radius: 20px; /* Píldora */
+            border-radius: 20px; 
             cursor: pointer;
-            box-shadow: 0 4px 0 #a9d486; /* Efecto 3D tierno */
+            box-shadow: 0 4px 0 #a9d486; 
             transition: all 0.2s;
             font-family: 'Quicksand', sans-serif;
             letter-spacing: 0.5px;
@@ -121,13 +119,13 @@
         button:hover {
             background-color: #bdf096;
             transform: translateY(2px);
-            box-shadow: 0 2px 0 #a9d486; /* Se achica la sombra al apretar */
+            box-shadow: 0 2px 0 #a9d486; 
         }
         
         .result {
             margin-top: 25px;
             padding: 20px;
-            background-color: #fef4f6; /* Fondo rosita muy claro */
+            background-color: #fef4f6; 
             border-radius: 20px;
             border: 2px dashed #fbdce2;
             display: none;
@@ -144,7 +142,7 @@
         
         .result p span:last-child {
             font-weight: 700;
-            color: #f18fb4; /* Números en rosa fuerte */
+            color: #f18fb4; 
         }
         
         .total {
@@ -163,7 +161,7 @@
             color: #8c6b6b;
             display: none;
             line-height: 1.6;
-            background-color: #ebf8ef; /* Fondito verde super claro */
+            background-color: #ebf8ef; 
             padding: 15px;
             border-radius: 20px;
             border: 2px dotted #a9d486;
@@ -181,7 +179,6 @@
             border: 2px solid #fbdce2;
         }
         
-        /* Decoraciones estilo chispitas */
         .sparkle {
             color: #fcd873;
             font-size: 20px;
@@ -223,7 +220,7 @@
         const baseValue = parseFloat(lotPriceInput);
 
         if (isNaN(baseValue) || baseValue <= 0) {
-            alert("¡Ups! Por favor, ingresa un valor mayor a 0 🌸");
+            alert("Por favor, ingresa un valor mayor a 0");
             return;
         }
 
@@ -236,7 +233,6 @@
             fee = ((3086 + (baseValue * 69.3)) * 1.03) + (baseValue * 30);
         }
 
-        // Aumento del 2% sobre el fee total calculado
         fee = fee * 1.02;
 
         fee = Math.round(fee);
