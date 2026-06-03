@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Geguri Casilla</title>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght=500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Quicksand', sans-serif;
-            background-color: #FAFAFA; /* Gris casi blanco muy limpio */
+            background-color: #dcf2f9;
             background-image: 
-                radial-gradient(#F0E6EA 20%, transparent 20%),
-                radial-gradient(#F0E6EA 20%, transparent 20%);
+                radial-gradient(#ffffff 20%, transparent 20%),
+                radial-gradient(#ffffff 20%, transparent 20%);
             background-position: 0 0, 20px 20px;
             background-size: 40px 40px;
             display: flex;
@@ -20,7 +20,7 @@
             min-height: 100vh;
             margin: 0;
             padding: 20px;
-            color: #796C74; /* Gris violáceo súper suave para el texto */
+            color: #8c6b6b;
             box-sizing: border-box;
         }
 
@@ -30,16 +30,16 @@
         
         .portal-card {
             background-color: #ffffff;
-            border: 6px solid #E6D5DC; /* Borde rosa/grisáceo pastel */
+            border: 6px solid #dcf2f9;
             border-radius: 35px;
             padding: 10px;
             width: 100%;
             max-width: 480px;
-            box-shadow: 0 10px 0 rgba(230, 213, 220, 0.6);
+            box-shadow: 0 10px 0 rgba(220, 242, 249, 0.8);
         }
 
         .card-inner {
-            border: 3px dashed #D6Cadd; /* Lavanda muy claro */
+            border: 3px dashed #fbdce2;
             border-radius: 25px;
             padding: 25px 20px;
         }
@@ -50,11 +50,11 @@
         }
 
         h1 {
-            color: #C098B5; /* Rosa lavanda apagado */
+            color: #f18fb4;
             font-size: 28px;
             font-weight: 700;
             margin: 0 0 5px 0;
-            text-shadow: 2px 2px 0px #F5EEF1;
+            text-shadow: 2px 2px 0px #fdf0f4;
         }
 
         .nav-tabs {
@@ -67,23 +67,23 @@
 
         .tab-button {
             display: table-cell;
-            background-color: #FAFAFA;
-            color: #796C74;
+            background-color: #fdf0f4;
+            color: #8c6b6b;
             text-align: center;
             padding: 10px 5px;
             font-size: 13px;
             font-weight: 700;
-            border: 2px solid #F0E6EA;
+            border: 2px solid #fbdce2;
             border-radius: 15px;
             cursor: pointer;
             transition: all 0.2s;
         }
 
         .tab-button.active {
-            background-color: #E6D5DC; /* Rosa perlado */
-            color: #614D59; /* Texto oscuro para contraste */
-            border-color: #D6Cadd;
-            box-shadow: 0 3px 0 #D6Cadd;
+            background-color: #c5eaa6;
+            color: #6a8c4f;
+            border-color: #a9d486;
+            box-shadow: 0 3px 0 #a9d486;
             transform: translateY(-2px);
         }
 
@@ -104,7 +104,7 @@
         }
 
         .carrd-menu a {
-            color: #796C74;
+            color: #8c6b6b;
             text-decoration: none;
             font-size: 16px;
             display: inline-block;
@@ -117,16 +117,16 @@
         }
 
         .highlight {
-            border-bottom: 3px solid #E6D5DC;
+            border-bottom: 3px solid #92d3a3;
             font-weight: 700;
-            color: #C098B5;
+            color: #6a8c4f;
             padding-bottom: 2px;
             text-decoration: none;
         }
 
         .info-block {
-            background-color: #FAFAFA;
-            border: 2px dashed #F0E6EA;
+            background-color: #fffafb;
+            border: 2px dashed #fbdce2;
             border-radius: 20px;
             padding: 20px;
             margin-bottom: 15px;
@@ -136,7 +136,7 @@
             font-size: 14px;
             line-height: 1.6;
             margin: 0 0 12px 0;
-            color: #796C74;
+            color: #8c6b6b;
         }
 
         .info-block ul {
@@ -150,16 +150,16 @@
 
         .info-block h4 {
             margin: 15px 0 10px 0;
-            color: #C098B5;
+            color: #f18fb4;
             font-size: 15px;
             font-weight: 700;
         }
 
         button.back-btn {
             width: 100%;
-            background-color: #F8F1F4;
-            color: #C098B5;
-            border: 2px solid #E6D5DC;
+            background-color: #fdf0f4;
+            color: #f18fb4;
+            border: 2px solid #fbdce2;
             padding: 12px;
             font-size: 16px;
             font-weight: 700;
@@ -171,8 +171,7 @@
         }
 
         button.back-btn:hover {
-            background-color: #E6D5DC;
-            color: #614D59;
+            background-color: #fbdce2;
             transform: translateY(2px);
         }
 
@@ -180,8 +179,8 @@
             font-weight: 700;
             display: block;
             margin-bottom: 8px;
-            color: #C098B5;
-            font-size: 15px;
+            color: #92d3a3;
+            font-size: 16px;
             text-align: center;
         }
         
@@ -189,100 +188,101 @@
             width: 100%;
             padding: 14px;
             margin-bottom: 20px;
-            border: 2px solid #F0E6EA;
-            background-color: #FAFAFA;
+            border: 2px solid #fbdce2;
+            background-color: #fffafb;
             border-radius: 20px;
             box-sizing: border-box;
             font-family: 'Quicksand', sans-serif;
             font-size: 16px;
-            color: #796C74;
+            color: #8c6b6b;
             text-align: center;
             font-weight: 700;
         }
         
         input[type="number"]:focus {
             outline: none;
-            border-color: #D6Cadd;
+            border-color: #f18fb4;
             background-color: #ffffff;
-            box-shadow: 0 0 8px rgba(214, 202, 221, 0.4);
+            box-shadow: 0 0 8px rgba(241, 143, 180, 0.3);
         }
         
         button.calc-btn {
             width: 100%;
-            background-color: #EADCE1; /* Botón en rosa/gris pastel */
-            color: #614D59;
+            background-color: #c5eaa6;
+            color: #6a8c4f;
             border: none;
             padding: 15px;
-            font-size: 17px;
+            font-size: 18px;
             font-weight: 700;
             border-radius: 20px;
             cursor: pointer;
-            box-shadow: 0 4px 0 #D0BDC5; 
+            box-shadow: 0 4px 0 #a9d486; 
             transition: all 0.2s;
             font-family: 'Quicksand', sans-serif;
+            letter-spacing: 0.5px;
         }
         
         button.calc-btn:hover {
-            background-color: #D6Cadd;
+            background-color: #bdf096;
             transform: translateY(2px);
-            box-shadow: 0 2px 0 #BCAED0;
+            box-shadow: 0 2px 0 #a9d486;
         }
         
         .result {
-            margin-top: 20px;
-            padding: 18px;
-            background-color: #F8F1F4;
+            margin-top: 25px;
+            padding: 20px;
+            background-color: #fef4f6;
             border-radius: 20px;
-            border: 2px dashed #E6D5DC;
+            border: 2px dashed #fbdce2;
             display: none;
         }
         
         .result p {
             margin: 10px 0;
-            font-size: 14px;
+            font-size: 15px;
             display: flex;
             justify-content: space-between;
-            color: #796C74;
+            color: #8c6b6b;
             font-weight: 500;
         }
         
         .result p span:last-child {
             font-weight: 700;
-            color: #C098B5;
+            color: #f18fb4;
         }
         
         .total {
-            font-size: 17px !important;
+            font-size: 18px !important;
             font-weight: 700;
-            color: #C098B5;
-            border-top: 2px dashed #E6D5DC;
-            padding-top: 12px;
-            margin-top: 12px !important;
+            color: #f18fb4;
+            border-top: 2px dashed #fbdce2;
+            padding-top: 15px;
+            margin-top: 15px !important;
         }
         
         .payment-info {
-            margin-top: 15px;
+            margin-top: 20px;
             text-align: center;
-            font-size: 13px;
-            color: #796C74;
+            font-size: 14px;
+            color: #8c6b6b;
             display: none;
             line-height: 1.6;
-            background-color: #FAFAFA;
-            padding: 12px;
+            background-color: #ebf8ef;
+            padding: 15px;
             border-radius: 20px;
-            border: 2px dotted #D6Cadd;
+            border: 2px dotted #a9d486;
         }
         
         .payment-info strong {
-            color: #C098B5;
-            font-size: 14px;
+            color: #f18fb4;
+            font-size: 15px;
             display: inline-block;
-            margin: 3px 0;
+            margin: 5px 0;
             font-weight: 700;
             background-color: #ffffff;
-            padding: 2px 10px;
-            border-radius: 12px;
-            border: 2px solid #E6D5DC;
+            padding: 4px 12px;
+            border-radius: 15px;
+            border: 2px solid #fbdce2;
         }
 
         .gif-container {
@@ -290,24 +290,18 @@
             margin: 0 auto 15px;
             border-radius: 20px;
             overflow: hidden;
-            border: 3px solid #E6D5DC;
-            background-color: #FAFAFA;
+            border: 3px solid #fbdce2;
+            background-color: #fdf0f4;
             pointer-events: none; 
         }
-        
-        .sparkle {
-            color: #D6Cadd;
-            font-size: 18px;
-        }
 
-        /* Estilo para la foto del corazón */
         .heart-img {
             width: 90px;
             height: 90px;
             object-fit: cover;
             display: block;
             margin: 0 auto 20px;
-            background-color: #F8F1F4; 
+            background-color: #fdf0f4; 
             
             -webkit-mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>');
             mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>');
@@ -317,6 +311,11 @@
             mask-position: center;
             -webkit-mask-repeat: no-repeat;
             mask-repeat: no-repeat;
+        }
+        
+        .sparkle {
+            color: #fcd873;
+            font-size: 20px;
         }
     </style>
 </head>
@@ -359,7 +358,7 @@
                     <li>En caso de que un ítem NO llegue, vamos a hacer reembolso de 50% del valor del ítem + envío + impuestos. No hacemos reembolsos por ítems que hayan llegado dañados o ítems falsos.</li>
                     <li>Si no se respetan las reglas y plazos de pago establecidos, vamos a reservarnos el derecho de tomar medidas según corresponda.</li>
                     <li>Únicamente entregamos aquellos ítems que fueron abonados en tiempo y forma y corresponden en el <a href="https://docs.google.com/spreadsheets/d/1tRuT84WzWkuh2ODi-n2X1TgKkxS90WaJFF0Q69eeEZE/edit?usp=sharing" target="_blank" class="highlight">Excel</a>. Los ítems sobrantes serán vendidos para cubrir gastos de supplies.</li>
-                    <li>Únicamente tomamos pedidos de tweets de sellers coreanas de Twitter, y pedidos de <a href="https://m.bunjang.co.kr" target="_blank" class="highlight">Bunjang</a>.</li>
+                    <li>Únicamente tomamos pedidos de tweets de sellers coreanas de <a href="https://x.com" target="_blank" class="highlight">Twitter</a>, y pedidos de <a href="https://m.bunjang.co.kr" target="_blank" class="highlight">Bunjang</a>.</li>
                     <li>Todos los lotes son de pago inmediato. Tanto lotes personales, como lotes grupales. Pedimos total responsabilidad al pedir.</li>
                     <li>No hay mínimo de ítems en cada pedido, solamente considerar que mientras menos ítems, los fees se dividen menos.</li>
                     <li>No pueden bajarse de los pedidos. Sólo pueden ceder sus items una vez se confirma el pedido.</li>
