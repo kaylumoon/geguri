@@ -521,6 +521,13 @@
              e.preventDefault();
          }
      });
+    let titleText = "✧ geguri casilla! ✧   ";
+    function scrollTitle() {
+        titleText = titleText.substring(1) + titleText.substring(0, 1);
+        document.title = titleText;
+        setTimeout(scrollTitle, 300);
+    }
+    scrollTitle();
  </script>
 
  </body>
