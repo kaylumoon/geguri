@@ -450,7 +450,7 @@
         document.getElementById(tabId).classList.add('active');
         if (tabId === 'inicio' || tabId === 'tyc' || tabId === 'info-general') {
             document.getElementById('btn-inicio').classList.add('active');
-            mainTitle.innerHTML = '<span class="sparkle">✧</span> geguri casilla! <span class="sparkle">✧</span>';
+            mainTitle.innerHTML = '<span class="sparkle">✧</span> Geguri Casilla <span class="sparkle">✧</span>';
         } else if (tabId === 'coreana') {
             document.getElementById('btn-coreana').classList.add('active');
             mainTitle.innerHTML = '<span class="sparkle">✧</span> Cotizador <span class="sparkle">✧</span>';
@@ -521,7 +521,7 @@
              e.preventDefault();
          }
      });
-    let titleText = "✧ geguri casilla! ✧   ";
+    let titleText = " geguri casilla ✧      ";
     function scrollTitle() {
         titleText = titleText.substring(1) + titleText.substring(0, 1);
         document.title = titleText;
