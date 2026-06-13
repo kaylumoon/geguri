@@ -479,7 +479,7 @@
         if (baseValue < 30) {
             fee = ((3086 + (baseValue * 41.7)) * 1.03) + (baseValue * 30);
         } else {
-            fee = ((3086 + (baseValue * 69.3)) * 1.03) + (baseValue * 30);
+            fee = ((3086 + (baseValue * 50)) * 1.03) + (baseValue * 30);
         }
         fee = Math.round(fee * 1.02);
         const total = itemCost + fee;
