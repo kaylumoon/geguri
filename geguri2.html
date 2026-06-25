@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geguri Casilla</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐸</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- FONDO CUADRICULADO PASTEL (Gingham) --- */
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #fdfdfd;
+            background-image: 
+                linear-gradient(90deg, rgba(189, 228, 195, 0.25) 50%, transparent 50%),
+                linear-gradient(rgba(244, 180, 202, 0.2) 50%, transparent 50%);
+            background-size: 40px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px 10px;
+            color: #9e8585; /* Marrón pastel */
+            box-sizing: border-box;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        /* --- CONTENEDOR PRINCIPAL --- */
+        .site-wrapper {
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+        }
+
+        /* Etiqueta superior izquierda (URL) */
+        .top-tag {
+            background-color: #fff0f5;
+            border: 3px solid #f4b4ca;
+            border-bottom: none;
+            border-radius: 15px 15px 0 0;
+            padding: 8px 20px;
+            display: inline-block;
+            font-weight: 700;
+            color: #f4b4ca;
+            margin-left: 20px;
+            font-size: 14px;
+            text-shadow: 1px 1px 0px #fff;
+        }
+
+        .portal-card {
+            background-color: #ffffff;
+            border: 3px solid #7eb68b;
+            border-radius: 25px;
+            width: 100%;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        /* --- HEADER VERDE MENTA --- */
+        .header-section {
+            background-color: #bde4c3;
+            padding: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #7eb68b;
+        }
+
+        .header-left h1 {
+            color: #ffffff;
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0 0 5px 0;
+            text-shadow: -2px -2px 0 #7eb68b, 2px -2px 0 #7eb68b, -2px 2px 0 #7eb68b, 2px 2px 0 #7eb68b;
+            letter-spacing: 1px;
+        }
+
+        .header-left .sub-info {
+            color: #7eb68b;
+            font-weight: 700;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        /* Botones estilo redes sociales */
+        .social-pills {
+            display: flex;
+            gap: 10px;
+        }
+
+        .pill {
+            background-color: #fff;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .pill.twitter { color: #7eb68b; border: 2px solid #7eb68b; }
+        .pill.wpp { color: #f4ca75; border: 2px solid #f4ca75; }
+        .pill.goms { color: #f4b4ca; border: 2px solid #f4b4ca; }
+
+        /* Foto de perfil circular */
+        .avatar-container {
+            width: 90px;
+            height: 90px;
+            background-color: #fff;
+            border-radius: 50%;
+            border: 3px solid #7eb68b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 4px;
+        }
+
+        .avatar-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: #fff0f5;
+            border: 2px dashed #f4b4ca;
+            background-image: url('foto.gif'); /* TU FOTO ACÁ */
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* --- BARRA DE NAVEGACIÓN ROSA --- */
+        .nav-container {
+            background-color: #fff0f5;
+            padding: 15px;
+            position: relative;
+        }
+
+        .nav-tabs {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
+        .tab-button {
+            flex: 1;
+            background-color: #ffffff;
+            color: #f4b4ca;
+            text-align: center;
+            padding: 8px 5px;
+            font-size: 13px;
+            font-weight: 700;
+            border: 2px solid #f4b4ca;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .tab-button.active {
+            background-color: #f4b4ca;
+            color: #ffffff;
+        }
+
+        /* Efecto de borde de ondas (Scallop) */
+        .scallop-divider {
+            height: 12px;
+            background-image: radial-gradient(circle at 10px 0, #fff0f5 10px, transparent 11px);
+            background-size: 20px 12px;
+            background-repeat: repeat-x;
+            margin-top: -1px;
+        }
+
+        /* --- CONTENIDO PRINCIPAL --- */
+        .content-area {
+            padding: 25px;
+            background-color: #ffffff;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Estilo de 2 columnas para T&C y Info General */
+        .two-columns {
+            display: flex;
+            gap: 20px;
+        }
+
+        .col-main {
+            flex: 2;
+        }
+
+        .col-side {
+            flex: 1;
+            border-left: 2px solid #bde4c3; /* Línea separadora verde */
+            padding-left: 15px;
+        }
+
+        /* Tipografía del contenido */
+        h2 {
+            color: #7eb68b;
+            font-size: 22px;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .cute-title {
+            color: #f4b4ca;
+            font-size: 26px;
+            text-align: center;
+            text-shadow: 2px 2px 0px #fff0f5;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        p, li {
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        ul {
+            padding-left: 15px;
+            margin: 0;
+        }
+        
+        li {
+            list-style-type: none;
+            position: relative;
+        }
+        
+        li::before {
+            content: "»";
+            color: #f4b4ca;
+            font-weight: bold;
+            position: absolute;
+            left: -15px;
+        }
+
+        .highlight-link {
+            color: #f4b4ca;
+            font-weight: bold;
+            text-decoration: underline;
+            text-decoration-style: dashed;
+        }
+
+        /* --- CALCULADORAS --- */
+        .calc-box {
+            background-color: #fff0f5;
+            border: 2px dashed #f4b4ca;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            font-weight: 700;
+            color: #7eb68b;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+        
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #bde4c3;
+            background-color: #ffffff;
+            border-radius: 15px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 15px;
+            color: #9e8585;
+            text-align: center;
+            font-weight: 700;
+        }
+        
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #7eb68b;
+        }
+        
+        button.calc-btn {
+            width: 100%;
+            background-color: #bde4c3;
+            color: #ffffff;
+            border: 2px solid #7eb68b;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: 'Quicksand', sans-serif;
+        }
+        
+        button.calc-btn:hover {
+            background-color: #7eb68b;
+            transform: translateY(2px);
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 2px dashed #f4b4ca;
+            display: none;
+            text-align: left;
+        }
+        
+        .result p {
+            margin: 8px 0;
+            display: flex;
+            justify-content: space-between;
+            font-weight: 500;
+        }
+        
+        .result p span:last-child {
+            font-weight: 700;
+            color: #7eb68b;
+        }
+        
+        .total {
+            font-size: 16px !important;
+            color: #f4b4ca !important;
+            background-color: #fff;
+            padding: 8px;
+            border-radius: 10px;
+            margin-top: 10px !important;
+            border: 1px solid #f4b4ca;
+        }
+
+        .payment-info {
+            margin-top: 15px;
+            font-size: 12px;
+            display: none;
+            background-color: #ffffff;
+            padding: 10px;
+            border-radius: 15px;
+            border: 2px dotted #7eb68b;
+        }
+
+        .payment-info strong {
+            color: #7eb68b;
+            font-size: 14px;
+        }
+
+        /* Estilos extras chiquitos */
+        .sparkle { color: #bde4c3; }
+        .footer-bar {
+            background-color: #bde4c3;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+            font-size: 12px;
+            border-top: 3px solid #7eb68b;
+        }
+    </style>
+</head>
+<body>
+
+<div class="site-wrapper">
+    <div class="top-tag">🐸 https://geguri-casilla.carrd.co</div>
+    
+    <div class="portal-card">
+        
+        <!-- HEADER MENTA -->
+        <header class="header-section">
+            <div class="header-left">
+                <h1>✤ Geguri Casilla</h1>
+                <div class="sub-info">buenos aires / envíos / kr & jp</div>
+                <div class="social-pills">
+                    <a href="https://x.com" target="_blank" class="pill twitter">twitter ➶</a>
+                    <a href="https://chat.whatsapp.com/Jz4UXp93Z9N2Wsw679wwcT" target="_blank" class="pill wpp">consultas 💬</a>
+                    <a href="#" class="pill goms">goms ✿</a>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="avatar-container">
+                    <div class="avatar-inner"></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- NAVEGACIÓN ROSA -->
+        <nav class="nav-container">
+            <div class="nav-tabs">
+                <div class="tab-button active" onclick="switchNavTab('inicio')">inicio</div>
+                <div class="tab-button" onclick="switchNavTab('tyc')">reglas</div>
+                <div class="tab-button" onclick="switchNavTab('coreana')">casilla kr</div>
+                <div class="tab-button" onclick="switchNavTab('buyee')">buyee jp</div>
+            </div>
+        </nav>
+        <!-- Borde de ondas -->
+        <div class="scallop-divider"></div>
+
+        <!-- ÁREA DE CONTENIDO BLANCA -->
+        <main class="content-area">
+            
+            <!-- SECCIÓN INICIO -->
+            <div id="inicio" class="tab-content active">
+                <h2 class="cute-title">✿ welcome ✿</h2>
+                <div class="two-columns">
+                    <div class="col-main">
+                        <h2>Info General</h2>
+                        <p>¡Bienvenidos a Geguri Casilla! Nos podes pasar tus pedidos a cualquier horario, contestamos según disponibilidad.</p>
+                        <p>Somos de Buenos Aires, Argentina. Hacemos entregas en Barrancas de Belgrano y hacemos envíos a todo el país por Paq.Ar.</p>
+                    </div>
+                    <div class="col-side">
+                        <h2 style="text-align: center;">{ nota }</h2>
+                        <p>Para consultar si estamos disponibles para enviarnos un pedido, consultar por el <a href="https://chat.whatsapp.com/Jz4UXp93Z9N2Wsw679wwcT" target="_blank" class="highlight-link">grupo de consultas</a>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN T&C -->
+            <div id="tyc" class="tab-content">
+                <div class="two-columns">
+                    <div class="col-main">
+                        <h2>Terms & Conditions</h2>
+                        <ul>
+                            <li>Si un ítem NO llega, hacemos reembolso de 50% del valor + envío + impuestos. No hay reembolso por ítems dañados/falsos.</li>
+                            <li>Solo entregamos ítems abonados en tiempo y forma que correspondan en el <a href="https://docs.google.com/spreadsheets/d/1tRuT84WzWkuh2ODi-n2X1TgKkxS90WaJFF0Q69eeEZE/edit?usp=sharing" target="_blank" class="highlight-link">Excel</a>. Ítems sobrantes serán vendidos.</li>
+                            <li>Tomamos pedidos de sellers de <a href="https://x.com" target="_blank" class="highlight-link">Twitter</a> y <a href="https://m.bunjang.co.kr" target="_blank" class="highlight-link">Bunjang</a>.</li>
+                            <li>Lotes de pago inmediato. Total responsabilidad al pedir.</li>
+                            <li>Sin mínimo de ítems, pero a menos ítems los fees se dividen menos.</li>
+                            <li>No pueden bajarse. Sólo pueden ceder sus items si se confirma.</li>
+                            <li>Ítems > 2.0 USD, su responsabilidad checkear a la seller.</li>
+                            <li>Solo photocards, postales, sminis/qrs. NO photobooks ni papelería.</li>
+                            <li>No le hablen a sellers de antemano.</li>
+                        </ul>
+                    </div>
+                    <div class="col-side">
+                        <h2 style="text-align: center;">{ buyee }</h2>
+                        <p style="font-weight: bold; color: #7eb68b; text-align: center;">status: OPEN</p>
+                        <ul>
+                            <li>Sin límite de precios. Solo aceptamos photocards.</li>
+                            <li>Hacemos batches según se llenan para enviar a KR.</li>
+                            <li>Pedir links en el grupo.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN CASILLA KR -->
+            <div id="coreana" class="tab-content">
+                <h2 class="cute-title">✤ Cotizador KR ✤</h2>
+                <div class="calc-box">
+                    <label for="lotPrice">Valor Base del Lote (USD)</label>
+                    <input type="number" id="lotPrice" placeholder="Ej: 15" min="0" step="1">
+                    
+                    <button class="calc-btn" onclick="calculateCoreana()">Calcular Total</button>
+
+                    <div class="result" id="resCoreana">
+                        <p><span>Valor del lote:</span> <span><span id="cBase">0</span> USD</span></p>
+                        <p><span>Valor (x1350):</span> <span>$<span id="cCost">0</span></span></p>
+                        <p><span>Fees + Envío:</span> <span>$<span id="cFee">0</span></span></p>
+                        <p class="total"><span>Total final:</span> <span>$<span id="cTotal">0</span></span></p>
+                    </div>
+
+                    <div class="payment-info" id="payCoreana">
+                        💳 Abonar al alias<br>
+                        <strong>CHAEWONDETRIPLES</strong><br>
+                        (Kaylee Smith)<br>
+                        Enviar comprobante a Whatsapp ✿
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN BUYEE JP -->
+            <div id="buyee" class="tab-content">
+                <h2 class="cute-title">✤ Cotizador Buyee ✤</h2>
+                <div class="calc-box">
+                    <label for="postUsd">Valor del post de Buyee (USD)</label>
+                    <input type="number" id="postUsd" placeholder="Ej: 24.50" min="0" step="0.01">
+                    
+                    <button class="calc-btn" onclick="calculateBuyee()">Calcular Total Buyee</button>
+
+                    <div class="result" id="resBuyee">
+                        <p><span>Valor del Post:</span> <span><span id="bPost">0</span> USD</span></p>
+                        <p class="total"><span>Total con fees:</span> <span>$<span id="bTotalArs">0</span></span></p>
+                    </div>
+
+                    <div class="payment-info" id="payBuyee">
+                        💳 Abonar al alias<br>
+                        <strong>CHAEWONDETRIPLES</strong><br>
+                        (Kaylee Smith)<br>
+                        Enviar comprobante + link a Whatsapp ✿
+                    </div>
+                </div>
+            </div>
+
+        </main>
+        
+        <!-- FOOTER VERDE -->
+        <div class="footer-bar">
+            Geguri Casilla | Custom Designs & Worldwide Shipping
+        </div>
+    </div>
+</div>
+
+<script>
+    // Función de pestañas
+    function switchNavTab(tabId) {
+        const contents = document.querySelectorAll('.tab-content');
+        const buttons = document.querySelectorAll('.tab-button');
+        
+        contents.forEach(content => content.classList.remove('active'));
+        buttons.forEach(btn => btn.classList.remove('active'));
+        
+        document.getElementById(tabId).classList.add('active');
+        
+        // Buscar el botón clickeado para activarlo
+        event.currentTarget.classList.add('active');
+    }
+
+    // Calculadora KR
+    function calculateCoreana() {
+        const input = document.getElementById('lotPrice').value;
+        const baseValue = parseFloat(input);
+        if (isNaN(baseValue) || baseValue <= 0) {
+            alert("Por favor, ingresa un valor mayor a 0");
+            return;
+        }
+        const itemCost = baseValue * 1350;
+        let fee = 0;
+        if (baseValue < 30) {
+            fee = ((3086 + (baseValue * 41.7)) * 1.03) + (baseValue * 30);
+        } else {
+            // Usando tu valor ajustado de 50.25
+            fee = ((3086 + (baseValue * 50.25)) * 1.03) + (baseValue * 30);
+        }
+        fee = Math.round(fee * 1.02);
+        const total = itemCost + fee;
+        
+        const fmt = num => num.toLocaleString('es-AR');
+        document.getElementById('cBase').innerText = baseValue;
+        document.getElementById('cCost').innerText = fmt(itemCost);
+        document.getElementById('cFee').innerText = fmt(fee);
+        document.getElementById('cTotal').innerText = fmt(total);
+        
+        document.getElementById('resCoreana').style.display = 'block';
+        document.getElementById('payCoreana').style.display = 'block';
+    }
+
+    // Calculadora Buyee
+    function calculateBuyee() {
+        const input = document.getElementById('postUsd').value;
+        const postUsd = parseFloat(input);
+        if (isNaN(postUsd) || postUsd <= 0) {
+            alert("Por favor, ingresa un valor válido mayor a 0");
+            return;
+        }
+        const feeUsd = 3.5;
+        const totalUsd = postUsd + feeUsd;
+        const totalArs = totalUsd * 1480;
+        
+        const fmtUsd = num => num.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const fmtArs = num => num.toLocaleString('es-AR', { maximumFractionDigits: 0 });
+        
+        document.getElementById('bPost').innerText = fmtUsd(postUsd);
+        document.getElementById('bTotalArs').innerText = fmtArs(totalArs);
+        
+        document.getElementById('resBuyee').style.display = 'block';
+        document.getElementById('payBuyee').style.display = 'block';
+    }
+     
+    // Seguridad (Bloqueo de clic derecho y F12)
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+ 
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'F12' || 
+            (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || 
+            (e.ctrlKey && e.key === 'u')) {
+            e.preventDefault();
+        }
+    });
+    
+    // Marquesina animada en la pestaña
+    let titleText = " 🌸 geguri casilla ✧       ";
+    function scrollTitle() {
+        titleText = titleText.substring(1) + titleText.substring(0, 1);
+        document.title = titleText;
+        setTimeout(scrollTitle, 300);
+    }
+    scrollTitle();
+</script>
+
+</body>
+</html>
