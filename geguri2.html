@@ -20,7 +20,7 @@
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            padding: 40px 10px;
+            padding: 20px 10px; /* Reducido para móviles */
             color: #9e8585; /* Marrón pastel */
             box-sizing: border-box;
         }
@@ -42,83 +42,91 @@
             border: 3px solid #f4b4ca;
             border-bottom: none;
             border-radius: 15px 15px 0 0;
-            padding: 8px 20px;
+            padding: 6px 15px; /* Ajustado para móviles */
             display: inline-block;
             font-weight: 700;
             color: #f4b4ca;
-            margin-left: 20px;
-            font-size: 14px;
+            margin-left: 10px; /* Ajustado para móviles */
+            font-size: 12px; /* Ajustado para móviles */
             text-shadow: 1px 1px 0px #fff;
+            max-width: calc(100% - 20px); /* Evitar desborde */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
 
         .portal-card {
             background-color: #ffffff;
             border: 3px solid #7eb68b;
-            border-radius: 25px;
+            border-radius: 20px; /* Suavizado para móviles */
             width: 100%;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* Suavizado para móviles */
             overflow: hidden;
         }
 
         /* --- HEADER VERDE MENTA --- */
         .header-section {
             background-color: #bde4c3;
-            padding: 25px;
+            padding: 15px; /* Reducido para móviles */
             display: flex;
-            justify-content: space-between;
+            flex-direction: column; /* Apilar elementos en móviles */
             align-items: center;
+            text-align: center;
             border-bottom: 3px solid #7eb68b;
+            gap: 15px;
         }
 
         .header-left h1 {
             color: #ffffff;
-            font-size: 28px;
+            font-size: 24px; /* Ajustado para móviles */
             font-weight: 700;
             margin: 0 0 5px 0;
-            text-shadow: -2px -2px 0 #7eb68b, 2px -2px 0 #7eb68b, -2px 2px 0 #7eb68b, 2px 2px 0 #7eb68b;
+            text-shadow: -1.5px -1.5px 0 #7eb68b, 1.5px -1.5px 0 #7eb68b, -1.5px 1.5px 0 #7eb68b, 1.5px 1.5px 0 #7eb68b;
             letter-spacing: 1px;
         }
 
         .header-left .sub-info {
             color: #7eb68b;
             font-weight: 700;
-            font-size: 13px;
+            font-size: 12px; /* Ajustado para móviles */
             margin-bottom: 10px;
         }
 
         /* Botones estilo redes sociales */
         .social-pills {
             display: flex;
-            gap: 10px;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap; /* Permitir que se envuelvan si no caben */
         }
 
         .pill {
             background-color: #fff;
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 12px;
+            padding: 4px 10px; /* Ajustado para móviles */
+            border-radius: 12px; /* Ajustado para móviles */
+            font-size: 11px; /* Ajustado para móviles */
             font-weight: 700;
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 4px;
         }
         
-        .pill.twitter { color: #7eb68b; border: 2px solid #7eb68b; }
-        .pill.wpp { color: #f4ca75; border: 2px solid #f4ca75; }
-        .pill.goms { color: #f4b4ca; border: 2px solid #f4b4ca; }
+        .pill.twitter { color: #7eb68b; border: 1.5px solid #7eb68b; }
+        .pill.wpp { color: #f4ca75; border: 1.5px solid #f4ca75; }
+        .pill.goms { color: #f4b4ca; border: 1.5px solid #f4b4ca; }
 
         /* Foto de perfil circular */
         .avatar-container {
-            width: 90px;
-            height: 90px;
+            width: 80px; /* Reducido para móviles */
+            height: 80px; /* Reducido para móviles */
             background-color: #fff;
             border-radius: 50%;
             border: 3px solid #7eb68b;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 4px;
+            padding: 3px;
         }
 
         .avatar-inner {
@@ -135,28 +143,31 @@
         /* --- BARRA DE NAVEGACIÓN ROSA --- */
         .nav-container {
             background-color: #fff0f5;
-            padding: 15px;
+            padding: 10px; /* Reducido para móviles */
             position: relative;
         }
 
         .nav-tabs {
             display: flex;
-            justify-content: space-between;
-            gap: 8px;
+            justify-content: center;
+            gap: 6px;
+            flex-wrap: wrap; /* Permitir que las pestañas se envuelvan si es necesario */
         }
 
         .tab-button {
-            flex: 1;
+            flex: 1 1 auto; /* Permitir que crezcan y se encojan, pero que no se fuercen a un ancho fijo */
+            min-width: calc(50% - 6px); /* Mostrar 2 por fila si la pantalla es muy estrecha */
             background-color: #ffffff;
             color: #f4b4ca;
             text-align: center;
-            padding: 8px 5px;
-            font-size: 13px;
+            padding: 6px; /* Ajustado para móviles */
+            font-size: 12px; /* Ajustado para móviles */
             font-weight: 700;
             border: 2px solid #f4b4ca;
-            border-radius: 15px;
+            border-radius: 12px; /* Ajustado para móviles */
             cursor: pointer;
             transition: all 0.2s;
+            margin-bottom: 4px; /* Espacio para cuando se envuelven */
         }
 
         .tab-button.active {
@@ -166,16 +177,16 @@
 
         /* Efecto de borde de ondas (Scallop) */
         .scallop-divider {
-            height: 12px;
+            height: 10px; /* Ajustado para móviles */
             background-image: radial-gradient(circle at 10px 0, #fff0f5 10px, transparent 11px);
-            background-size: 20px 12px;
+            background-size: 20px 10px; /* Ajustado para móviles */
             background-repeat: repeat-x;
             margin-top: -1px;
         }
 
         /* --- CONTENIDO PRINCIPAL --- */
         .content-area {
-            padding: 25px;
+            padding: 15px; /* Reducido para móviles */
             background-color: #ffffff;
         }
 
@@ -196,44 +207,39 @@
         /* Estilo de 2 columnas para T&C y Info General */
         .two-columns {
             display: flex;
-            gap: 20px;
+            flex-direction: column; /* Apilar en móviles de forma predeterminada */
+            gap: 15px;
         }
 
-        .col-main {
-            flex: 2;
-        }
-
-        .col-side {
-            flex: 1;
-            border-left: 2px solid #bde4c3; /* Línea separadora verde */
-            padding-left: 15px;
+        .col-main, .col-side {
+            width: 100%; /* Tomar todo el ancho en móviles */
         }
 
         /* Tipografía del contenido */
         h2 {
             color: #7eb68b;
-            font-size: 22px;
+            font-size: 18px; /* Ajustado para móviles */
             margin-top: 0;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .cute-title {
             color: #f4b4ca;
-            font-size: 26px;
+            font-size: 22px; /* Ajustado para móviles */
             text-align: center;
-            text-shadow: 2px 2px 0px #fff0f5;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
+            text-shadow: 1.5px 1.5px 0px #fff0f5;
+            margin-bottom: 15px;
+            letter-spacing: 1.5px;
         }
 
         p, li {
-            font-size: 13px;
-            line-height: 1.6;
-            margin-bottom: 12px;
+            font-size: 12px; /* Ajustado para móviles */
+            line-height: 1.5;
+            margin-bottom: 10px;
         }
 
         ul {
-            padding-left: 15px;
+            padding-left: 12px; /* Ajustado para móviles */
             margin: 0;
         }
         
@@ -247,7 +253,7 @@
             color: #f4b4ca;
             font-weight: bold;
             position: absolute;
-            left: -15px;
+            left: -12px;
         }
 
         .highlight-link {
@@ -261,10 +267,10 @@
         .calc-box {
             background-color: #fff0f5;
             border: 2px dashed #f4b4ca;
-            border-radius: 20px;
-            padding: 20px;
+            border-radius: 15px; /* Ajustado para móviles */
+            padding: 15px; /* Reducido para móviles */
             text-align: center;
-            max-width: 400px;
+            max-width: 100%; /* Asegurar que se adapte */
             margin: 0 auto;
         }
 
@@ -272,19 +278,19 @@
             font-weight: 700;
             color: #7eb68b;
             display: block;
-            margin-bottom: 10px;
-            font-size: 15px;
+            margin-bottom: 8px;
+            font-size: 14px;
         }
         
         input[type="number"] {
             width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
+            padding: 10px; /* Ajustado para móviles */
+            margin-bottom: 12px; /* Ajustado para móviles */
             border: 2px solid #bde4c3;
             background-color: #ffffff;
-            border-radius: 15px;
+            border-radius: 12px; /* Ajustado para móviles */
             font-family: 'Quicksand', sans-serif;
-            font-size: 15px;
+            font-size: 14px; /* Ajustado para móviles */
             color: #9e8585;
             text-align: center;
             font-weight: 700;
@@ -300,10 +306,10 @@
             background-color: #bde4c3;
             color: #ffffff;
             border: 2px solid #7eb68b;
-            padding: 12px;
-            font-size: 16px;
+            padding: 10px; /* Ajustado para móviles */
+            font-size: 14px; /* Ajustado para móviles */
             font-weight: 700;
-            border-radius: 15px;
+            border-radius: 12px; /* Ajustado para móviles */
             cursor: pointer;
             transition: all 0.2s;
             font-family: 'Quicksand', sans-serif;
@@ -315,18 +321,19 @@
         }
         
         .result {
-            margin-top: 20px;
-            padding-top: 15px;
+            margin-top: 15px;
+            padding-top: 12px;
             border-top: 2px dashed #f4b4ca;
             display: none;
             text-align: left;
         }
         
         .result p {
-            margin: 8px 0;
+            margin: 6px 0;
             display: flex;
             justify-content: space-between;
             font-weight: 500;
+            font-size: 11px; /* Más pequeño para móviles */
         }
         
         .result p span:last-child {
@@ -335,28 +342,28 @@
         }
         
         .total {
-            font-size: 16px !important;
+            font-size: 13px !important; /* Ajustado para móviles */
             color: #f4b4ca !important;
             background-color: #fff;
-            padding: 8px;
-            border-radius: 10px;
-            margin-top: 10px !important;
+            padding: 6px;
+            border-radius: 8px;
+            margin-top: 8px !important;
             border: 1px solid #f4b4ca;
         }
 
         .payment-info {
-            margin-top: 15px;
-            font-size: 12px;
+            margin-top: 12px;
+            font-size: 11px; /* Ajustado para móviles */
             display: none;
             background-color: #ffffff;
-            padding: 10px;
-            border-radius: 15px;
+            padding: 8px;
+            border-radius: 12px;
             border: 2px dotted #7eb68b;
         }
 
         .payment-info strong {
             color: #7eb68b;
-            font-size: 14px;
+            font-size: 12px;
         }
 
         /* Estilos extras chiquitos */
@@ -365,10 +372,159 @@
             background-color: #bde4c3;
             color: #fff;
             text-align: center;
-            padding: 10px;
+            padding: 8px; /* Ajustado para móviles */
             font-weight: bold;
-            font-size: 12px;
+            font-size: 10px; /* Ajustado para móviles */
             border-top: 3px solid #7eb68b;
+        }
+
+        /* --- MEDIA QUERIES PARA PANTALLAS MÁS GRANDES (Ajustes responsivos adicionales) --- */
+        @media (min-width: 600px) {
+            body {
+                padding: 40px 10px;
+            }
+            .top-tag {
+                padding: 8px 20px;
+                margin-left: 20px;
+                font-size: 14px;
+            }
+            .portal-card {
+                border-radius: 25px;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            }
+            .header-section {
+                padding: 25px;
+                flex-direction: row; /* Volver a horizontal */
+                justify-content: space-between;
+                text-align: left;
+                gap: 0;
+            }
+            .header-left h1 {
+                font-size: 28px;
+                margin: 0 0 5px 0;
+            }
+            .header-left .sub-info {
+                font-size: 13px;
+                margin-bottom: 10px;
+            }
+            .social-pills {
+                gap: 10px;
+                justify-content: flex-start;
+            }
+            .pill {
+                padding: 4px 12px;
+                border-radius: 15px;
+                font-size: 12px;
+                gap: 5px;
+            }
+            .avatar-container {
+                width: 90px;
+                height: 90px;
+                padding: 4px;
+            }
+            .nav-container {
+                padding: 15px;
+            }
+            .nav-tabs {
+                justify-content: space-between;
+                gap: 8px;
+                flex-wrap: nowrap; /* No envolver */
+            }
+            .tab-button {
+                flex: 1;
+                min-width: auto;
+                padding: 8px 5px;
+                font-size: 13px;
+                border-radius: 15px;
+                margin-bottom: 0;
+            }
+            .scallop-divider {
+                height: 12px;
+                background-size: 20px 12px;
+            }
+            .content-area {
+                padding: 25px;
+            }
+            .two-columns {
+                flex-direction: row; /* Volver a horizontal */
+                gap: 20px;
+            }
+            .col-main {
+                flex: 2;
+                width: auto;
+            }
+            .col-side {
+                flex: 1;
+                width: auto;
+                border-left: 2px solid #bde4c3; /* Línea separadora verde */
+                padding-left: 15px;
+            }
+            h2 {
+                font-size: 22px;
+                margin-bottom: 15px;
+            }
+            .cute-title {
+                font-size: 26px;
+                margin-bottom: 20px;
+                letter-spacing: 2px;
+            }
+            p, li {
+                font-size: 13px;
+                margin-bottom: 12px;
+            }
+            ul {
+                padding-left: 15px;
+            }
+            li::before {
+                left: -15px;
+            }
+            .calc-box {
+                border-radius: 20px;
+                padding: 20px;
+                max-width: 400px;
+            }
+            label {
+                margin-bottom: 10px;
+                font-size: 15px;
+            }
+            input[type="number"] {
+                padding: 12px;
+                margin-bottom: 15px;
+                border-radius: 15px;
+                font-size: 15px;
+            }
+            button.calc-btn {
+                padding: 12px;
+                font-size: 16px;
+                border-radius: 15px;
+            }
+            .result {
+                margin-top: 20px;
+                padding-top: 15px;
+            }
+            .result p {
+                margin: 8px 0;
+                font-size: 12px;
+            }
+            .total {
+                font-size: 16px !important;
+                padding: 8px;
+                border-radius: 10px;
+                margin-top: 10px !important;
+            }
+            .payment-info {
+                margin-top: 15px;
+                font-size: 12px;
+                padding: 10px;
+                border-radius: 15px;
+            }
+            .payment-info strong {
+                font-size: 14px;
+            }
+            .footer-bar {
+                padding: 10px;
+                font-size: 12px;
+            }
         }
     </style>
 </head>
@@ -526,6 +682,7 @@
         document.getElementById(tabId).classList.add('active');
         
         // Buscar el botón clickeado para activarlo
+        // Usar currentTarget para mayor compatibilidad
         event.currentTarget.classList.add('active');
     }
 
@@ -594,7 +751,7 @@
     });
     
     // Marquesina animada en la pestaña
-    let titleText = " 🌸 geguri casilla ✧       ";
+    let titleText = " 🌸 geguri casilla ✧        ";
     function scrollTitle() {
         titleText = titleText.substring(1) + titleText.substring(0, 1);
         document.title = titleText;
