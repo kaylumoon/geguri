@@ -263,6 +263,72 @@
             text-decoration-style: dashed;
         }
 
+        .input-group {
+
+            display: flex;
+
+            gap: 10px;
+
+            margin-bottom: 12px;
+
+        }
+
+        .input-group input[type="number"] {
+
+            margin-bottom: 0;
+
+            flex: 2;
+
+        }
+
+        .input-group select {
+
+            flex: 1;
+
+            padding: 10px;
+
+            border: 2px solid #bde4c3;
+
+            background-color: #ffffff;
+
+            border-radius: 12px;
+
+            font-family: 'Quicksand', sans-serif;
+
+            font-size: 14px;
+
+            color: #9e8585;
+
+            font-weight: 700;
+
+            outline: none;
+
+            cursor: pointer;
+
+        }
+
+        .input-group select:focus {
+
+            border-color: #7eb68b;
+
+        }
+
+        @media (min-width: 600px) {
+
+            .input-group { margin-bottom: 15px; }
+
+            .input-group select {
+
+                padding: 12px;
+
+                border-radius: 15px;
+
+                font-size: 15px;
+
+            }
+
+        }
+
         /* --- CALCULADORAS --- */
         .calc-box {
             background-color: #fff0f5;
@@ -642,8 +708,14 @@
             <div id="buyee" class="tab-content">
                 <h2 class="cute-title">✤ Cotizador Buyee ✤</h2>
                 <div class="calc-box">
-                    <label for="postUsd">Valor del post de Buyee (USD)</label>
-                    <input type="number" id="postUsd" placeholder="Ej: 24.50" min="0" step="0.01">
+                    <label for="postAmount">Valor del post de Buyee</label>
+                    <div class="input-group">
+                        <input type="number" id="postAmount" placeholder="Ej: 2500" min="0" step="0.01">
+                        <select id="currencySelect">
+                            <option value="JPY">¥ Yenes</option>
+                            <option value="USD">$ USD</option>
+                        </select>
+                    </div>
                     
                     <button class="calc-btn" onclick="calculateBuyee()">Calcular Total</button>
 
@@ -717,14 +789,29 @@
 
     // Calculadora Buyee
     function calculateBuyee() {
-        const input = document.getElementById('postUsd').value;
-        const postUsd = parseFloat(input);
-        if (isNaN(postUsd) || postUsd <= 0) {
+        const input = document.getElementById('postAmount').value;
+        const amount = parseFloat(input);
+        const currency = document.getElementById('currencySelect').value;
+
+        if (isNaN(amount) || amount <= 0) {
             alert("Por favor, ingresa un valor válido mayor a 0");
             return;
         }
+
+        let postUsd = 0;
+        
+        // Lógica de conversión de monedas
+        if (currency === 'JPY') {
+            // Regla de 3: 699 YEN = 4.53 USD
+            postUsd = (amount / 699) * 4.53;
+        } else {
+            postUsd = amount;
+        }
+
         const feeUsd = 3.5;
         const totalUsd = postUsd + feeUsd;
+        
+        // Multiplicamos por la nueva cotización que me pasaste (1530)
         const totalArs = totalUsd * 1530;
         
         const fmtUsd = num => num.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -736,7 +823,17 @@
         document.getElementById('resBuyee').style.display = 'block';
         document.getElementById('payBuyee').style.display = 'block';
     }
-     
+
+     // Cambiar el ejemplo (placeholder) según la moneda elegida
+     document.getElementById('currencySelect').addEventListener('change', function() {
+         const inputAmount = document.getElementById('postAmount');
+         if (this.value === 'JPY') {
+             inputAmount.placeholder = "Ej: 2500";
+         } else {
+             inputAmount.placeholder = "Ej: 12.50";
+         }
+     });
+
     // Seguridad (Bloqueo de clic derecho y F12)
     document.addEventListener('contextmenu', function(e) {
         e.preventDefault();
